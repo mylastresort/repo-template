@@ -9,6 +9,8 @@ jobs:
   validate-pr-title:
     name: PR title follows conventional commits
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
     steps:
       - uses: amannn/action-semantic-pull-request@v5
         env:
@@ -32,6 +34,8 @@ jobs:
   validate-pr-body:
     name: PR body has required sections
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
     steps:
       - uses: actions/github-script@v7
         with:
@@ -68,6 +72,9 @@ jobs:
   validate-benchmark-updated:
     name: perf PRs must update BENCHMARK.md
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
