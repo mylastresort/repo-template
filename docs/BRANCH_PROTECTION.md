@@ -7,15 +7,15 @@ After creating your repo from this template, apply these rules manually in
 
 ## Required Rules
 
-| Rule | Value |
-|------|-------|
-| Require a pull request before merging | ✅ enabled |
-| Required approvals | 1 (or more for teams) |
-| Dismiss stale PR approvals on new commits | ✅ enabled |
-| Require status checks to pass before merging | ✅ enabled |
-| Require branches to be up to date | ✅ enabled |
-| Block force pushes | ✅ enabled |
-| Do not allow bypassing the above settings | ✅ enabled (applies to admins) |
+| Rule                                         | Value                          |
+| -------------------------------------------- | ------------------------------ |
+| Require a pull request before merging        | ✅ enabled                     |
+| Required approvals                           | 1 (or more for teams)          |
+| Dismiss stale PR approvals on new commits    | ✅ enabled                     |
+| Require status checks to pass before merging | ✅ enabled                     |
+| Require branches to be up to date            | ✅ enabled                     |
+| Block force pushes                           | ✅ enabled                     |
+| Do not allow bypassing the above settings    | ✅ enabled (applies to admins) |
 
 ---
 
@@ -23,14 +23,14 @@ After creating your repo from this template, apply these rules manually in
 
 Add these checks — they map exactly to job names in the workflows:
 
-| Check name | Workflow file |
-|------------|---------------|
-| `lint-commits` | `commitlint.yml` |
+| Check name                              | Workflow file       |
+| --------------------------------------- | ------------------- |
+| `lint-commits`                          | `commitlint.yml`    |
 | `PR title follows conventional commits` | `pr-validation.yml` |
-| `PR body has required sections` | `pr-validation.yml` |
-| `perf PRs must update BENCHMARK.md` | `pr-validation.yml` |
-| `Release & Changelog` | `release.yml` |
-| `Run Tests and Coverage` | `test.yml` |
+| `PR body has required sections`         | `pr-validation.yml` |
+| `perf PRs must update BENCHMARK.md`     | `pr-validation.yml` |
+| `Release & Changelog`                   | `release.yml`       |
+| `Run Tests and Coverage`                | `test.yml`          |
 
 > Status check names must match exactly. Run each workflow at least once so
 > GitHub discovers them before you add them as required checks.
@@ -39,10 +39,10 @@ Add these checks — they map exactly to job names in the workflows:
 
 ## Secrets Required
 
-| Secret | Used by | Required |
-|--------|---------|----------|
-| `GITHUB_TOKEN` | All workflows | Auto-provided by GitHub — never set manually |
-| `CODECOV_TOKEN` | `test.yml` | codecov.io → your repo → Settings → General |
+| Secret          | Used by       | Required                                     |
+| --------------- | ------------- | -------------------------------------------- |
+| `GITHUB_TOKEN`  | All workflows | Auto-provided by GitHub — never set manually |
+| `CODECOV_TOKEN` | `test.yml`    | codecov.io → your repo → Settings → General  |
 
 ---
 
@@ -93,11 +93,11 @@ feat: or fix: PR merged into main
 
 After the release PR merges, confirm all three happened:
 
-| Where | What to check |
-|-------|---------------|
-| **Actions tab** | Release workflow ran green on the merge commit |
+| Where             | What to check                                        |
+| ----------------- | ---------------------------------------------------- |
+| **Actions tab**   | Release workflow ran green on the merge commit       |
 | **Releases page** | New release `vX.Y.Z` exists with full changelog body |
-| **Tags page** | New tag `vX.Y.Z` points to the merge commit |
+| **Tags page**     | New tag `vX.Y.Z` points to the merge commit          |
 
 If the release and tag are missing but the workflow ran green, the most
 likely cause is a missing `contents: write` permission in `release.yml`.
