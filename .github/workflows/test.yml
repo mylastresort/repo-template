@@ -1,0 +1,42 @@
+name: Tests and Coverage
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Run Tests and Coverage
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          # Replace with your test command, e.g.:
+          # cargo test
+          # go test ./...
+          # pytest
+          # npm test
+          echo "placeholder — add your test command here"
+
+      - name: Generate coverage
+        run: |
+          # Replace with your coverage command, e.g.:
+          # cargo tarpaulin --out Lcov --output-dir coverage
+          # go test -coverprofile=coverage/lcov.info ./...
+          # pytest --cov --cov-report=lcov:coverage/lcov.info
+          echo "placeholder — add your coverage command here"
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/lcov.info
+          fail_ci_if_error: true
+          verbose: true
